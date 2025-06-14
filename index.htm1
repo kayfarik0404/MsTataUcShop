@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Ms_TATA Uc_Shop | PUBG Mobile UC</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: #111;
+      color: #fff;
+      margin: 0;
+      padding: 0;
+    }
+    header {
+      background: #ff007f;
+      padding: 20px;
+      text-align: center;
+      animation: fadeInDown 1s ease;
+    }
+    header h1 {
+      margin: 0;
+      font-size: 32px;
+    }
+    .container {
+      padding: 20px;
+      max-width: 900px;
+      margin: auto;
+      animation: fadeIn 2s ease;
+    }
+    .uc-package {
+      background: #222;
+      padding: 15px;
+      border-radius: 12px;
+      margin-bottom: 15px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .uc-package:hover {
+      transform: scale(1.02);
+      box-shadow: 0 4px 15px rgba(255, 0, 127, 0.3);
+    }
+    .uc-package h2 {
+      margin: 0;
+      font-size: 20px;
+    }
+    .buy-btn {
+      background: #ff007f;
+      color: #fff;
+      border: none;
+      padding: 10px 20px;
+      font-size: 16px;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+    .buy-btn:hover {
+      background: #e60073;
+    }
+    footer {
+      text-align: center;
+      padding: 20px;
+      background: #1a1a1a;
+      margin-top: 30px;
+      animation: fadeInUp 1.5s ease;
+    }
+    .telegram-link {
+      color: #00acee;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 1000;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.7);
+      justify-content: center;
+      align-items: center;
+      animation: fadeIn 0.5s ease;
+    }
+    .modal-content {
+      background-color: #222;
+      padding: 20px;
+      border-radius: 12px;
+      text-align: center;
+      max-width: 400px;
+      width: 90%;
+      color: #fff;
+      box-shadow: 0 0 10px rgba(255, 0, 127, 0.4);
+      animation: fadeInUp 0.5s ease;
+    }
+    .modal-close {
+      background: #ff007f;
+      color: #fff;
+      padding: 10px 15px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      margin-top: 15px;
+    }
+    .modal-content input {
+      width: 100%;
+      padding: 10px;
+      margin: 10px 0;
+      border-radius: 8px;
+      border: none;
+    }
+    .modal-content button.send-btn {
+      background: #00c853;
+      margin-top: 10px;
+    }
+
+    @keyframes fadeIn {
+      from {opacity: 0;}
+      to {opacity: 1;}
+    }
+    @keyframes fadeInDown {
+      from {opacity: 0; transform: translateY(-20px);}
+      to {opacity: 1; transform: translateY(0);}
+    }
+    @keyframes fadeInUp {
+      from {opacity: 0; transform: translateY(20px);}
+      to {opacity: 1; transform: translateY(0);}
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Ms_TATA Uc_Shop</h1>
+    <p>Покупка UC для PUBG Mobile от 60 до 8100</p>
+  </header>
+
+  <div class="container">
+    <div class="uc-package">
+      <h2>60 UC – 75₽</h2>
+      <button class="buy-btn" onclick="openModal('60 UC – 75₽')">Купить</button>
+    </div>
+    <div class="uc-package">
+      <h2>325 UC – 380₽</h2>
+      <button class="buy-btn" onclick="openModal('325 UC – 380₽')">Купить</button>
+    </div>
+    <div class="uc-package">
+      <h2>660 UC – 740₽</h2>
+      <button class="buy-btn" onclick="openModal('660 UC – 740₽')">Купить</button>
+    </div>
+    <div class="uc-package">
+      <h2>1800 UC – 1900₽</h2>
+      <button class="buy-btn" onclick="openModal('1800 UC – 1900₽')">Купить</button>
+    </div>
+    <div class="uc-package">
+      <h2>3850 UC – 3900₽</h2>
+      <button class="buy-btn" onclick="openModal('3850 UC – 3900₽')">Купить</button>
+    </div>
+    <div class="uc-package">
+      <h2>8100 UC – 8000₽</h2>
+      <button class="buy-btn" onclick="openModal('8100 UC – 8000₽')">Купить</button>
+    </div>
+  </div>
+
+  <div class="modal" id="popupModal">
+    <div class="modal-content">
+      <p id="modalText">Вы выбрали товар</p>
+      <input type="text" id="pubgId" placeholder="Введите ваш PUBG ID" />
+      <input type="text" id="pubgNick" placeholder="Введите ваш ник в PUBG" />
+      <button class="send-btn" onclick="sendToTelegram()">Отправить</button>
+      <button class="modal-close" onclick="closeModal()">Закрыть</button>
+    </div>
+  </div>
+
+  <footer>
+    <p>Связаться с нами в Telegram: <a href="https://t.me/MsTata48" class="telegram-link">@MsTata48</a></p>
+    <p>© 2025 Ms_TATA Uc_Shop</p>
+  </footer>
+
+  <script>
+    let selectedProduct = '';
+
+    function openModal(product) {
+      selectedProduct = product;
+      document.getElementById('modalText').innerText = `Вы выбрали: ${product}`;
+      document.getElementById('popupModal').style.display = 'flex';
+    }
+
+    function closeModal() {
+      document.getElementById('popupModal').style.display = 'none';
+    }
+
+    function sendToTelegram() {
+      const id = document.getElementById('pubgId').value.trim();
+      const nick = document.getElementById('pubgNick').value.trim();
+      const token = '7101878932:AAFrtN5iCUFZks4_eJ6-Gs7hHWTMBz6764M';
+      const chat_id = '7101878932';
+      const message = `🛒 Новый заказ:\n\n📦 Товар: ${selectedProduct}\n🆔 PUBG ID: ${id}\n👤 Ник: ${nick}`;
+
+      fetch(`https://api.telegram.org/bot${token}/sendMessage`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          chat_id: chat_id,
+          text: message
+        })
+      })
+      .then(res => {
+        alert('Данные отправлены в Telegram!');
+        closeModal();
+      })
+      .catch(err => {
+        alert('Ошибка при отправке. Попробуйте позже.');
+        console.error(err);
+      });
+    }
+  </script>
+</body>
+</html>
